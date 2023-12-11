@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-#2023.december.11
+Ez egy új fajl.
 =======
-#2023.december 11.
+Ez egy új fájl
 >>>>>>> 3026192577cf95695d74e853258223c2bd259087
