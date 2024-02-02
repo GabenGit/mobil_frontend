@@ -1,16 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, Text, View, Image} from 'react-native';
-import Ipcim from './Ipcim';
+import {ActivityIndicator, FlatList, Text, View} from 'react-native';
+import WebView from 'react-native-webview';
 
-const App = () => {
+const Video = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const getMovies = async () => {
     try {
-      const response = await fetch(Ipcim.Ipcim+'uzlet');
+      const response = await fetch('https://reactnative.dev/movies.json');
       const json = await response.json();
-      setData(json);
+      setData(json.movies);
     } catch (error) {
       console.error(error);
     } finally {
@@ -24,6 +24,8 @@ const App = () => {
 
   return (
     <View style={{flex: 1, padding: 24}}>
+        <WebView
+        source={{ uri: 'https://www.youtube.com/watch?v=y60st_77YMc' }} style={{ flex: 1 }} />
       {isLoading ? (
         <ActivityIndicator />
       ) : (
@@ -31,15 +33,9 @@ const App = () => {
           data={data}
           keyExtractor={({id}) => id}
           renderItem={({item}) => (
-          <View>
-            <Text style={{fontSize: 15, fontWeight: 'bold'}}>
-              {item.uzlet_nev}, {item.uzlet_cim}
-             </Text>
-            <Text style={{borderTopWidth: 1.5}}>
-
+            <Text>
+              {item.title}, {item.releaseYear}
             </Text>
-             <Image source={{uri:Ipcim.Ipcim+item.uzlet_kep}} style={{width:150,height:150, borderWidth: 2, borderColor: 'black'}}   />  
-                </View>
           )}
         />
       )}
@@ -47,4 +43,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Video;

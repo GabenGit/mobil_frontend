@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, Text, View, Image} from 'react-native';
+import {ActivityIndicator, FlatList, Text, View, Button} from 'react-native';
 import Ipcim from './Ipcim';
 
-const App = () => {
+const Kozosscreen = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
   const getMovies = async () => {
     try {
-      const response = await fetch(Ipcim.Ipcim+'uzlet');
+      const response = await fetch(Ipcim.Ipcim+'uzlettipus');
       const json = await response.json();
       setData(json);
     } catch (error) {
@@ -31,15 +31,15 @@ const App = () => {
           data={data}
           keyExtractor={({id}) => id}
           renderItem={({item}) => (
-          <View>
-            <Text style={{fontSize: 15, fontWeight: 'bold'}}>
-              {item.uzlet_nev}, {item.uzlet_cim}
-             </Text>
-            <Text style={{borderTopWidth: 1.5}}>
-
-            </Text>
-             <Image source={{uri:Ipcim.Ipcim+item.uzlet_kep}} style={{width:150,height:150, borderWidth: 2, borderColor: 'black'}}   />  
-                </View>
+            <View>
+              <Text>
+                {item.uzlettipus_id}, {item.uzlettipus_nev}
+              </Text>
+              <Button 
+            onPress={() => navigation.navigate('Ujlap',{atkuld1:item.uzlettipus_id,atkuld2:item.uzlettipus_nev})}
+            title="Részletek"
+          />
+            </View>
           )}
         />
       )}
@@ -47,4 +47,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Kozosscreen;

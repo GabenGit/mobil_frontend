@@ -1,0 +1,1 @@
+ <Image source={{uri:Ipcim.Ipcim+item.uzlet_kep}} style={{width:300,height:300, resizeMode: 'cover'}} />

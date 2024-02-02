@@ -4,7 +4,11 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Proba from './Proba';
-import Uzletek from "./Uzletek"
+import Uzletek from "./Uzletek";
+import Kozosscreen from './Kozosscreen';
+import Video from './Video';
+import Ujlap from './Ujlap';
+import Keresesszoveg from './Keresesszoveg';
 
 import Lenyilo from "./Lenyilo"
 
@@ -37,6 +41,9 @@ function Root({ navigation }) {
     <Drawer.Screen name="Notifications" component={NotificationsScreen} />
     <Drawer.Screen name="Uzletek" component={Uzletek} />   
     <Drawer.Screen name="Lenyilo" component={Lenyilo} /> 
+    <Drawer.Screen name="Kozosscreen" component={Kozosscreen} />
+    <Drawer.Screen name="Video" component={Video} />  
+    <Drawer.Screen name="Keresesszoveg" component={Keresesszoveg} />  
     </Drawer.Navigator>
 
   );
@@ -53,7 +60,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator >
         <Stack.Screen name="Root" component={Root} options={{headerShown:false}} />
-        <Stack.Screen name="Proba" component={Proba}  />  
+        <Stack.Screen name="Proba" component={Proba}  />
+        <Stack.Screen name="Ujlap" component={Ujlap}  />
              
       </Stack.Navigator>     
     </NavigationContainer>
