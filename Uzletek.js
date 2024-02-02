@@ -31,10 +31,13 @@ const App = () => {
           data={data}
           keyExtractor={({id}) => id}
           renderItem={({item}) => (
+          <View>
             <Text>
-              {item.uzlet_id}, {item.uzlet_nev}, {item.uzlet_cim},
-              <Image source={{uri:Ipcim.Ipcim+item.uzlet_kep}} style={{width:300,height:300}}   />
-            </Text>
+              {item.uzlet_id}, {item.uzlet_nev}, {item.uzlet_cim}
+             </Text>
+                <Image source={{uri:Ipcim.Ipcim+item.uzlet_kep}} style={{width:300,height:300, resizeMode: 'cover'}} />
+                
+                </View>
           )}
         />
       )}
